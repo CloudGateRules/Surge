@@ -1,5 +1,5 @@
 ###Surge 是一款 iOS 网络调试应用
->UPlus For Surge 由 Eval 维护
+>UPlus Of Surge 由 Eval 维护
 >>更新记录:  
 ```
 Version2.2: 1.修正"LastPass"的加载问题2.修正"Medium'应用加载问题
