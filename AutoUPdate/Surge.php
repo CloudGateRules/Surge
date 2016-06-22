@@ -6,6 +6,7 @@ $Server = "172.0.0.1";      //地址
 $Module = "http://7xpphx.com1.z0.glb.clouddn.com/Proxy/Surge.Module"; //Module
 $Password = "Password1024.";//密码
 $NAME = "UPlus";            //名称
+$DNS = ",force-remote-dns";  //DNS
 //-------------文件-------------//
 $DefaultFile = "http://7xpphx.com1.z0.glb.clouddn.com/Proxy/File/Default.txt";
 $Default = fopen($DefaultFile,"r");
@@ -66,26 +67,26 @@ echo fgets($Default)."";
 {
 fclose($Default);
 }
-//Proxy
-echo"\r\n# Proxy\r\n";
+//PROXY
+echo"\r\n# PROXY\r\n";
 while(!feof($Proxy))
 {
-echo fgets($Proxy)."";
+echo trim(fgets($Proxy)).$DNS."\r\n"; 
 }
 {
 fclose($Proxy);
 }
 //GFWList
-echo"\r\n# GFWList\r\n";
+echo"# GFWList\r\n";
 while(!feof($GFWList))
 {
-echo fgets($GFWList)."";
+echo trim(fgets($GFWList)).$DNS."\r\n"; 
 }
 {
 fclose($GFWList);
 }
 //DIRECT
-echo"\r\n# DIRECT\r\n";
+echo"# DIRECT\r\n";
 while(!feof($DIRECT))
 {
 echo fgets($DIRECT)."";
@@ -125,6 +126,6 @@ fclose($IPCIDR);
 //Other
 echo"\r\n# Other\r\n";
 echo"GEOIP,CN,DIRECT\r\n";
-echo"FINAL,DIRECT";
+echo"FINAL,Proxy";
 exit();
 //--------------END-------------//
