@@ -2,7 +2,7 @@
 //------------Start-------------//
 header("cache-control:no-cache,must-revalidate");//No-Cache
 header("Content-Type:text/html;charset=UTF-8");//UTF-8
-//-------------通用-------------// 
+//-------------通用-------------//
 $NAME = "UPlus";            //名称
 $Module = "http://7xpphx.com1.z0.glb.clouddn.com/Proxy/Surge.Module"; //Module
 $Server = "172.0.0.1";      //地址
@@ -96,6 +96,7 @@ echo"# GFWList\r\n";
 while(!feof($GFWList))
 {
 echo trim(fgets($GFWList)).$ProxyRU.$DNS."\r\n"; 
+}
 {
 fclose($GFWList);
 }
@@ -113,6 +114,7 @@ echo"# REJECT\r\n";
 while(!feof($REJECT))
 {
 echo trim(fgets($REJECT)).$REJECTRU."\r\n"; 
+}
 {
 fclose($REJECT);
 }
@@ -141,6 +143,4 @@ echo"\r\n# Other\r\n";
 echo"GEOIP,CN,DIRECT\r\n";
 echo"FINAL,Proxy";
 exit();
-}
-}
 //--------------END-------------//
