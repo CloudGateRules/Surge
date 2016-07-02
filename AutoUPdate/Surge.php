@@ -9,6 +9,9 @@ $Server = "172.0.0.1";      //地址
 $Port = "80";               //端口
 $Password = "Password1024.";//密码
 $Method = "aes-256-cfb";    //方式
+$ProxyRU = ",AutoGroup";    //其他
+$DIRECTRU = ",DIRECT";      //其他
+$REJECTRU = ",REJECT";      //其他
 $DNS = ",force-remote-dns"; //其他
 //-------------文件-------------//
 $DefaultFile = "http://7xpphx.com1.z0.glb.clouddn.com/Proxy/File/Default.txt";
@@ -74,16 +77,16 @@ echo "\r\n[Rule]";
 echo"\r\n# Default\r\n";
 while(!feof($Default))
 {
-echo fgets($Default)."";
+echo trim(fgets($Default)).$DIRECTRU."\r\n"; 
 }
 {
 fclose($Default);
 }
 //PROXY
-echo"\r\n# PROXY\r\n";
+echo"# PROXY\r\n";
 while(!feof($Proxy))
 {
-echo trim(fgets($Proxy)).$DNS."\r\n"; 
+echo trim(fgets($Proxy)).$ProxyRU.$DNS."\r\n"; 
 }
 {
 fclose($Proxy);
@@ -92,7 +95,7 @@ fclose($Proxy);
 echo"# GFWList\r\n";
 while(!feof($GFWList))
 {
-echo trim(fgets($GFWList)).$DNS."\r\n"; 
+echo trim(fgets($GFWList)).$ProxyRU.$DNS."\r\n"; 
 }
 {
 fclose($GFWList);
@@ -101,22 +104,22 @@ fclose($GFWList);
 echo"# DIRECT\r\n";
 while(!feof($DIRECT))
 {
-echo fgets($DIRECT)."";
+echo trim(fgets($DIRECT)).$DIRECTRU."\r\n"; 
 }
 {
 fclose($DIRECT);
 }
 //REJECT
-echo"\r\n# REJECT\r\n";
+echo"# REJECT\r\n";
 while(!feof($REJECT))
 {
-echo fgets($REJECT)."";
+echo trim(fgets($REJECT)).$REJECTRU."\r\n"; 
 }
 {
 fclose($REJECT);
 }
 //KEYWORD
-echo"\r\n# KEYWORD\r\n";
+echo"# KEYWORD\r\n";
 while(!feof($KEYWORD))
 {
 echo "DOMAIN-KEYWORD,";
@@ -138,6 +141,6 @@ fclose($IPCIDR);
 //Other
 echo"\r\n# Other\r\n";
 echo"GEOIP,CN,DIRECT\r\n";
-echo"FINAL,Proxy";
+echo"FINAL$ProxyRU";
 exit();
 //--------------END-------------//
