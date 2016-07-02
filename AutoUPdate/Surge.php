@@ -9,11 +9,7 @@ $Server = "172.0.0.1";      //地址
 $Port = "80";               //端口
 $Password = "Password1024.";//密码
 $Method = "aes-256-cfb";    //方式
-<<<<<<< HEAD
 $ProxyRU = ",AutoGroup";    //其他
-=======
-$ProxyRU = ",Proxy";        //其他
->>>>>>> origin/master
 $DIRECTRU = ",DIRECT";      //其他
 $REJECTRU = ",REJECT";      //其他
 $DNS = ",force-remote-dns"; //其他
