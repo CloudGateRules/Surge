@@ -1,4 +1,6 @@
 ###Surge 是一款 iOS 网络调试应用
+
+[![Join the chat at https://gitter.im/BurpSuite/UPlus-Surge](https://badges.gitter.im/BurpSuite/UPlus-Surge.svg)](https://gitter.im/BurpSuite/UPlus-Surge?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 >UPlus Of Surge 由 Eval 维护
 >>更新记录:  
 ```
