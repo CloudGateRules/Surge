@@ -10,10 +10,6 @@ $Server = "172.0.0.1";    //服务器
 $Port = "80";               //端口
 $Password = "Password1024.";//密码
 $Method = "aes-256-cfb";    //方式
-$ProxyRU = ",Proxy";        //其他
-$DIRECTRU = ",DIRECT";      //其他
-$REJECTRU = ",REJECT";      //其他
-$DNS = ",force-remote-dns"; //其他
 //-------------文件-------------//
 $HOSTSFile = "http://7xpphx.com1.z0.glb.clouddn.com/Proxy/File/HOSTS.txt";
 $HOSTSFile  = $HOSTSFile . '?Cache='.time();
@@ -24,9 +20,6 @@ $Default = fopen($DefaultFile,"r");
 $ProxyFile = "http://7xpphx.com1.z0.glb.clouddn.com/Proxy/File/Proxy.txt";
 $ProxyFile  = $ProxyFile . '?Cache='.time();
 $Proxy = fopen($ProxyFile,"r");
-$GFWListFile = "http://7xpphx.com1.z0.glb.clouddn.com/Proxy/File/GFWList.txt";
-$GFWListFile  = $GFWListFile . '?Cache='.time();
-$GFWList = fopen($GFWListFile,"r");
 $DIRECTFile = "http://7xpphx.com1.z0.glb.clouddn.com/Proxy/File/DIRECT.txt";
 $DIRECTFile  = $DIRECTFile . '?Cache='.time();
 $DIRECT = fopen($DIRECTFile,"r");
@@ -87,7 +80,7 @@ echo "\r\n[Rule]";
 echo"\r\n# Default\r\n";
 while(!feof($Default))
 {
-echo trim(fgets($Default)).$DIRECTRU."\r\n"; 
+echo trim(fgets($Default)).",DIRECT"."\r\n"; 
 }
 {
 fclose($Default);
@@ -100,23 +93,10 @@ if($Proxy){//判断打开错误
 echo"# PROXY\r\n";
 while(!feof($Proxy))
 {
-echo trim(fgets($Proxy)).$ProxyRU.$DNS."\r\n"; 
+echo trim(fgets($Proxy)).",Proxy,force-remote-dns"."\r\n"; 
 }
 {
 fclose($Proxy);
-}
-}else {
-  echo "下载失败!";//
-}
-//GFWList
-if($GFWList){//判断打开错误
-echo"# GFWList\r\n";
-while(!feof($GFWList))
-{
-echo trim(fgets($GFWList)).$ProxyRU.$DNS."\r\n"; 
-}
-{
-fclose($GFWList);
 }
 }else {
   echo "下载失败!";//
@@ -126,7 +106,7 @@ if($DIRECT){//判断打开错误
 echo"# DIRECT\r\n";
 while(!feof($DIRECT))
 {
-echo trim(fgets($DIRECT)).$DIRECTRU."\r\n"; 
+echo trim(fgets($DIRECT)).",DIRECT"."\r\n"; 
 }
 {
 fclose($DIRECT);
@@ -139,7 +119,7 @@ if($REJECT){//判断打开错误
 echo"# REJECT\r\n";
 while(!feof($REJECT))
 {
-echo trim(fgets($REJECT)).$REJECTRU."\r\n"; 
+echo trim(fgets($REJECT)).",REJECT"."\r\n"; 
 }
 {
 fclose($REJECT);
@@ -167,7 +147,7 @@ echo"\r\n# IP-CIDR\r\n";
 while(!feof($IPCIDR))
 {
 echo "IP-CIDR,";
-echo fgets($IPCIDR)."";
+echo trim(fgets($IPCIDR)).",no-resolve"."\r\n"; 
 }
 {
 fclose($IPCIDR);
@@ -176,8 +156,8 @@ fclose($IPCIDR);
   echo "下载失败!";//
 }
 //Other
-echo"\r\n# Other\r\n";
+echo"# Other\r\n";
 echo"GEOIP,CN,DIRECT\r\n";
-echo"FINAL$ProxyRU";
+echo"FINAL,Proxy";
 exit();
 //--------------END-------------//
