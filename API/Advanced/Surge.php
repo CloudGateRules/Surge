@@ -1,5 +1,8 @@
 <?php
 
+# 引用Controller控制器模块
+require '../Controller/Controller.php';
+
 # 关闭所有 Notice | Warning 级别的错误
 error_reporting(E_ALL^E_NOTICE^E_WARNING);
 
@@ -8,42 +11,13 @@ header("cache-control:no-cache,must-revalidate");
 header("Content-Type:text/html;charset=UTF-8");
 header('Content-Disposition: attachment; filename='.'Surge.Conf');
 
-# 默认模块API托管在Github[GithubUserContent] | 模块数组 | 请求模块禁止缓存
-$ModuleAPI    = "https://raw.githubusercontent.com/BurpSuite/CloudGate-RuleList/master/Rule/";
-$ModuleArray  = array("Advanced","Basic","DIRECT","Default","HostsFix","IPCIDR","KEYWORD","REJECT","Rewrite","YouTube","Other","USERAGENT");
-$Cache        = '?Cache='.sha1(mt_rand()).'&TimeStamp='.time();
-
-# 设定参数默认值
-$Module       = "https://raw.githubusercontent.com/BurpSuite/CloudGate-RuleList/master/Module/Module";
-$AutoGroupURL = "http://www.gstatic.com/generate_204";
-
-# 接收GET请求参数
-$Logo      = $_GET['Logo'];
-$AutoGroup = $_GET['AutoGroup'];
-$Rule      = $_GET['Rule'];
-$Apple     = $_GET['Apple'];
-$IPV6      = $_GET['IPV6'];
-$Group     = $_GET['Group'];
-$DNS1      = $_GET['DNS1'];
-$DNS2      = $_GET['DNS2'];
-$Config1   = $_GET['Config1'];
-$Config2   = $_GET['Config2'];
-$Config3   = $_GET['Config3'];
-$Config4   = $_GET['Config4'];
-$Config5   = $_GET['Config5'];
-$Flag1     = $_GET['Flag1'];
-$Flag2     = $_GET['Flag2'];
-$Flag3     = $_GET['Flag3'];
-$Flag4     = $_GET['Flag4'];
-$Flag5     = $_GET['Flag5'];
-
-# 检测GET接收参数
+# 检测GET参数
 if(empty($Logo)){$Logo="true";}else{$Logo=$Logo;}
 if(empty($AutoGroup)){$AutoGroup="false";}elseif($AutoGroup=="true"){$AutoGroup=="true";}elseif($AutoGroup=="select"){$AutoGroup=="select";}else{$AutoGroup="false";}
 if(empty($Rule)){$Rule="false";}elseif($Rule=="true"){$Rule="true";}else{$Rule="false";}
 if(empty($Group)){$Group="1";}else{$Group=$Group;}
 if(empty($IPV6)){$IPV6="true";}elseif($IPV6=="true"){$IPV6="true";}else{$IPV6="false";}
-if(empty($Apple)){$Apple="false";$GETApple="DIRECT";}elseif($Apple=="true"){$GETApple="Proxy";}else{$Apple="false";$GETApple="DIRECT";}
+if(empty($Apple)){$Apple="false";}elseif($Apple=="true"){$Apple="true";}else{$Apple="false";}
 if(empty($DNS1)){$DNS1="8.8.8.8";}else{$DNS1=$DNS1;}
 if(empty($DNS2)){$DNS2="8.8.4.4";}else{$DNS2=$DNS2;}
 if(empty($Config1)){$Config1="127.0.0.1,80,aes-256-cfb,Password";}else{$Config1=$Config1;}
@@ -57,62 +31,8 @@ if(empty($Flag3)){$Flag3="NONE3";}else{$Flag3=$Flag3;$ENFlag3 = urlencode($Flag3
 if(empty($Flag4)){$Flag4="NONE4";}else{$Flag4=$Flag4;$ENFlag4 = urlencode($Flag4);}
 if(empty($Flag5)){$Flag5="NONE5";}else{$Flag5=$Flag5;$ENFlag5 = urlencode($Flag5);}
 
-# 参数组合一起就是完整的模块地址
-$AdvancedFile  = $ModuleAPI.$ModuleArray[0].$Cache;
-$BasicFile     = $ModuleAPI.$ModuleArray[1].$Cache;
-$DIRECTFile    = $ModuleAPI.$ModuleArray[2].$Cache;
-$DefaultFile   = $ModuleAPI.$ModuleArray[3].$Cache;
-$HostsFixFile  = $ModuleAPI.$ModuleArray[4].$Cache;
-$IPCIDRFile    = $ModuleAPI.$ModuleArray[5].$Cache;
-$KEYWORDFile   = $ModuleAPI.$ModuleArray[6].$Cache;
-$REJECTFile    = $ModuleAPI.$ModuleArray[7].$Cache;
-$RewriteFile   = $ModuleAPI.$ModuleArray[8].$Cache;
-$YouTubeFile   = $ModuleAPI.$ModuleArray[9].$Cache;
-$OtherFile     = $ModuleAPI.$ModuleArray[10].$Cache;
-$USERAGENTFile = $ModuleAPI.$ModuleArray[11].$Cache;
-
-# 现在暂时还是单线程,后续可能会改成循环请求或多线程请求
-$DefaultModuleCURL  = curl_init();
-curl_setopt($DefaultModuleCURL,CURLOPT_URL,"$DefaultFile");
-curl_setopt($DefaultModuleCURL,CURLOPT_RETURNTRANSFER,true);
-$DefaultCURLF       = curl_exec($DefaultModuleCURL);
-curl_close($DefaultModuleCURL);
-$AdvancedModuleCURL = curl_init();
-if($Rule=="true"){curl_setopt($AdvancedModuleCURL,CURLOPT_URL,"$BasicFile");}
-elseif($Rule=="false"){curl_setopt($AdvancedModuleCURL,CURLOPT_URL,"$AdvancedFile");}
-curl_setopt($AdvancedModuleCURL,CURLOPT_RETURNTRANSFER,true);
-$AdvancedCURLF      = curl_exec($AdvancedModuleCURL);
-curl_close($AdvancedModuleCURL);
-$DIRECTModuleCURL   = curl_init();
-curl_setopt($DIRECTModuleCURL,CURLOPT_URL,"$DIRECTFile");
-curl_setopt($DIRECTModuleCURL,CURLOPT_RETURNTRANSFER,true);
-$DIRECTCURLF        = curl_exec($DIRECTModuleCURL);
-curl_close($DIRECTModuleCURL);
-$REJECTModuleCURL   = curl_init();
-curl_setopt($REJECTModuleCURL,CURLOPT_URL,"$REJECTFile");
-curl_setopt($REJECTModuleCURL,CURLOPT_RETURNTRANSFER,true);
-$REJECTCURLF        = curl_exec($REJECTModuleCURL);
-curl_close($REJECTModuleCURL);
-$KEYWORDModuleCURL  = curl_init();
-curl_setopt($KEYWORDModuleCURL,CURLOPT_URL,"$KEYWORDFile");
-curl_setopt($KEYWORDModuleCURL,CURLOPT_RETURNTRANSFER,true);
-$KEYWORDCURLF       = curl_exec($KEYWORDModuleCURL);
-curl_close($KEYWORDModuleCURL);
-$IPCIDRModuleCURL   = curl_init();
-curl_setopt($IPCIDRModuleCURL,CURLOPT_URL,"$IPCIDRFile");
-curl_setopt($IPCIDRModuleCURL,CURLOPT_RETURNTRANSFER,true);
-$IPCIDRCURLF        = curl_exec($IPCIDRModuleCURL);
-curl_close($IPCIDRModuleCURL);
-$RewriteModuleCURL  = curl_init();
-curl_setopt($RewriteModuleCURL,CURLOPT_URL,"$RewriteFile");
-curl_setopt($RewriteModuleCURL,CURLOPT_RETURNTRANSFER,true);
-$RewriteCURLF       = curl_exec($RewriteModuleCURL);
-curl_close($RewriteModuleCURL);
-$OtherModuleCURL    = curl_init();
-curl_setopt($OtherModuleCURL,CURLOPT_URL,"$OtherFile");
-curl_setopt($OtherModuleCURL,CURLOPT_RETURNTRANSFER,true);
-$OtherCURLF         = curl_exec($OtherModuleCURL);
-curl_close($OtherModuleCURL);
+# 判断GET参数
+if($Rule=="true"){$AdvancedCURLF=$BasicCURLF;}elseif($Rule=="false"){$AdvancedCURLF=$AdvancedCURLF;}
 
 # 正则表达式替换规则格式
 if($AutoGroup=="true"){$Default = preg_replace('/([^])([ \s]+)/','$1,AutoGroup$2',$DefaultCURLF."\r\n");}
@@ -221,3 +141,5 @@ echo "# IP-CIDR\r\n".$IPCIDR;
 echo "# Other\r\n".$Other;
 echo "[URL Rewrite]\r\n";
 echo "# Rewrite\r\n".$Rewrite;
+
+?>
