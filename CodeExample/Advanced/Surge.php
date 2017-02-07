@@ -35,7 +35,7 @@ echo "# Surge Config File [CloudGate]\r\n";
 echo "# Download Time: " . date("Y-m-d H:i:s") . "\r\n";
 echo "# \r\n";
 echo "[Proxy]\r\n";
-for($j=0;$j<$Group;++$j){echo $SERVER1_Exp[$j].' = '.$SERVER2_Exp[$j].','.$SERVER3_Exp[$j].','.$ConfigFile."\r\n";}
+for($j=0;$j<$Group;++$j){echo $SERVER1_Exp[$j].' = '.$SERVER2_Exp[$j].','.$SERVER3_Exp[$j].','.$CryptoFile."\r\n";}
 echo "[Proxy Group]\r\n";
 if($AutoGroup==='false'){echo 'Proxy = select,'.$SERVER_Implode."\r\n";}
 elseif($AutoGroup==='select'){echo 'Auto = select, AutoGroup,'.$SERVER_Implode."\r\n";}

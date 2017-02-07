@@ -28,9 +28,9 @@ echo "# Surge Config File [CloudGate]\r\n";
 echo "# Download Time: " . date("Y-m-d H:i:s") . "\r\n";
 echo "# \r\n";
 echo "[Proxy]\r\n";
-echo "🇨🇳 = custom,172.0.0.1,80,aes-256-cfb,Password,$ConfigFile\r\n";
-echo "🇳🇫 = custom,172.0.0.1,80,aes-256-cfb,Password,$ConfigFile\r\n";
-echo "🇬🇧 = custom,172.0.0.1,80,aes-256-cfb,Password,$ConfigFile\r\n";
+echo "🇨🇳 = custom,172.0.0.1,80,aes-256-cfb,Password,$CryptoFile\r\n";
+echo "🇳🇫 = custom,172.0.0.1,80,aes-256-cfb,Password,$CryptoFile\r\n";
+echo "🇬🇧 = custom,172.0.0.1,80,aes-256-cfb,Password,$CryptoFile\r\n";
 echo "[Proxy Group]\r\n";
 echo "Proxy = select, 🇨🇳, 🇳🇫, 🇬🇧\r\n";
 
