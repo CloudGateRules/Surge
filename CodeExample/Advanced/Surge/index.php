@@ -16,8 +16,8 @@ require_once "../../Controller/Controller.php";
 
 # 处理URI参数
 GET().parse_str($REQUEST_QUERY_URI);
-@Verify($DNS,$SERVER1,$SERVER2,$SERVER3,$SERVER4,$SERVER5,$SERVER6,$SERVER7,$SERVER8,$SERVER9,$SERVER0,$Group,$Rule,$IPV6,$Apple,$WIFIAccess,$AutoGroup,$Interval,$Tolerance,$TimeOut,$AGENT,$MacOS);
-Exp_lode($Group,$DNS,$SERVER1,$SERVER2,$SERVER3,$SERVER4,$SERVER5,$SERVER6,$SERVER7,$SERVER8,$SERVER9,$SERVER0,$MacOS);
+@Verify($DNS,$SERVER1,$SERVER2,$SERVER3,$SERVER4,$SERVER5,$SERVER6,$SERVER7,$SERVER8,$SERVER9,$SERVER0,$Group,$Rule,$IPV6,$Apple,$WIFIAccess,$AutoGroup,$Interval,$Tolerance,$TimeOut,$AGENT,$MacOS,$MITM);
+Exp_lode($Group,$DNS,$SERVER1,$SERVER2,$SERVER3,$SERVER4,$SERVER5,$SERVER6,$SERVER7,$SERVER8,$SERVER9,$SERVER0,$MacOS,$MITM);
 
 # REQUEST配置信息
 echo "#!MANAGED-CONFIG {$Host}://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']."\r\n";
@@ -59,5 +59,11 @@ echo "[Host]\r\n";
 echo Advanced(CURL($RuleList['Host']).$CURLContent,$AutoGroup,$Apple).$Hosts;
 echo "[URL Rewrite]\r\n";
 echo Advanced(CURL($RuleList['Rewrite']).$CURLContent,$AutoGroup,$Apple).$Rewrite;
+if($MITM_Exp[0]==='true'){
+echo "[MITM]\r\n";
+echo "enable = {$MITM_Exp[0]}\r\n";
+echo 'hostname = '.CURL($RuleList['MITMHost']).$CURLContent."\r\n";
+echo "ca-passphrase = {$MITM_Exp[1]}\r\n";
+echo 'ca-p12 = '.CURL($MITM_Exp[2]).$CURLContent."\r\n";}
 
 ?>

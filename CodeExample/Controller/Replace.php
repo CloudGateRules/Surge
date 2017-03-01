@@ -13,11 +13,12 @@ function Verify($DNS=NULL,$SERVER1=NULL,$SERVER2=NULL,$SERVER3=NULL,
                 $SERVER4=NULL,$SERVER5=NULL,$SERVER6=NULL,$SERVER7=NULL,$SERVER8=NULL,
                 $SERVER9=NULL,$SERVER0=NULL,$Group=NULL,$Rule=NULL,$IPV6=NULL,
                 $Apple=NULL,$WIFIAccess=NULL,$AutoGroup=NULL,$Interval=NULL,$Tolerance=NULL,
-                $TimeOut=NULL,$AGENT=NULL,$MacOS=NULL)
+                $TimeOut=NULL,$AGENT=NULL,$MacOS=NULL,$MITM=NULL)
 {
     global $DNS,$SERVER1,$SERVER2,$SERVER3,$SERVER4,$SERVER5,$SERVER6;
     global $SERVER7,$SERVER8,$SERVER9,$SERVER0,$Rule,$Group,$IPV6;
     global $Apple,$WIFIAccess,$AutoGroup,$Interval,$Tolerance,$TimeOut,$MacOS;
+    global $MITM;
     !empty($DNS)        ? $DNS        = $DNS        : $DNS        = 'true,2,8.8.8.8,8.8.4.4';
     !empty($SERVER1)    ? $SERVER1    = $SERVER1    : $SERVER1    = 'NONE1,custom,127.0.0.1,80,aes-256-cfb,Password';
     !empty($SERVER2)    ? $SERVER2    = $SERVER2    : $SERVER2    = 'NONE2,custom,127.0.0.1,80,aes-256-cfb,Password';
@@ -40,12 +41,14 @@ function Verify($DNS=NULL,$SERVER1=NULL,$SERVER2=NULL,$SERVER3=NULL,
     !empty($TimeOut)    ? $TimeOut    = $TimeOut    : $TimeOut    = '5';
     !empty($AGENT)      ? $AGENT      = $AGENT      : $AGENT      = 'false';
     !empty($MacOS)      ? $MacOS      = $MacOS      : $MacOS      = 'false';
+    !empty($MITM)       ? $MITM       = $MITM       : $MITM       = 'false';
 }
 
 # Explode String
-function Exp_lode($Group='2',$DNS=NULL,$SERVER1=NULL,$SERVER2=NULL,$SERVER3=NULL,$SERVER4=NULL,$SERVER5=NULL,$SERVER6=NULL,$SERVER7=NULL,$SERVER8=NULL,$SERVER9=NULL,$SERVER0=NULL,$MacOS=NULL){
+function Exp_lode($Group='2',$DNS=NULL,$SERVER1=NULL,$SERVER2=NULL,$SERVER3=NULL,$SERVER4=NULL,$SERVER5=NULL,$SERVER6=NULL,$SERVER7=NULL,$SERVER8=NULL,$SERVER9=NULL,$SERVER0=NULL,$MacOS=NULL,$MITM=NULL){
     global $SERVER1_Exp,$SERVER2_Exp,$SERVER3_Exp,$DNS_ExpA,$MacOS_Exp;
-    global $SERVER_Implode,$DNS_Implode,$Potatso_List;
+    global $SERVER_Implode,$DNS_Implode,$Potatso_List,$MITM_Exp;
+    $MITM_Exp     = explode(',',$MITM);
     $MacOS_Exp    = explode(',',$MacOS);
     $SERVER1_ExpA = explode(',',$SERVER1,3);
     $SERVER2_ExpA = explode(',',$SERVER2,3);
@@ -257,9 +260,9 @@ function Advanced($Replace,$AutoGroup,$Apple){
         $Advanced_Default = 'AutoGroup';$Advanced_USERAGENT = 'AutoGroup';
     }
     elseif($AutoGroup==='false'&&$Apple==='false'){
-        $Advanced_Proxy   = 'Proxy'; $Advanced_KEYWORD   = 'Proxy';
-        $Advanced_IPCIDR  = 'Proxy'; $Advanced_Other     = 'Proxy';
-        $Advanced_Default = 'DIRECT';$Advanced_USERAGENT = 'Proxy';
+        $Advanced_Proxy   = 'Proxy'; $Advanced_KEYWORD      = 'Proxy';
+        $Advanced_IPCIDR  = 'Proxy'; $Advanced_Other        = 'Proxy';
+        $Advanced_Default = 'DIRECT';$Advanced_USERAGENT    = 'Proxy';
     }
     elseif($AutoGroup==='true'&&$Apple==='false'){
         $Advanced_Proxy   = 'AutoGroup';$Advanced_KEYWORD   = 'AutoGroup';
@@ -267,24 +270,24 @@ function Advanced($Replace,$AutoGroup,$Apple){
         $Advanced_Default = 'DIRECT';   $Advanced_USERAGENT = 'AutoGroup';
     }
     elseif($AutoGroup==='false'&&$Apple==='true'){
-        $Advanced_Proxy   = 'Proxy';$Advanced_KEYWORD   = 'Proxy';
-        $Advanced_IPCIDR  = 'Proxy';$Advanced_Other     = 'Proxy';
-        $Advanced_Default = 'Proxy';$Advanced_USERAGENT = 'Proxy';
+        $Advanced_Proxy   = 'Proxy';$Advanced_KEYWORD       = 'Proxy';
+        $Advanced_IPCIDR  = 'Proxy';$Advanced_Other         = 'Proxy';
+        $Advanced_Default = 'Proxy';$Advanced_USERAGENT     = 'Proxy';
     }
     elseif($AutoGroup==='select'&&$Apple==='true'){
-        $Advanced_Proxy   = 'Auto';$Advanced_KEYWORD = 'Auto';
-        $Advanced_IPCIDR  = 'Auto';$Advanced_Other   = 'Auto';
-        $Advanced_Default = 'Auto';
+        $Advanced_Proxy   = 'Auto';$Advanced_KEYWORD        = 'Auto';
+        $Advanced_IPCIDR  = 'Auto';$Advanced_Other          = 'Auto';
+        $Advanced_Default = 'Auto';$Advanced_USERAGENT      = 'Auto';
     }
     elseif($AutoGroup==='select'&&$Apple==='false'){
-        $Advanced_Proxy   = 'Auto';  $Advanced_KEYWORD   = 'Auto';
-        $Advanced_IPCIDR  = 'Auto';  $Advanced_Other     = 'Auto';
-        $Advanced_Default = 'DIRECT';$Advanced_USERAGENT = 'Auto';
+        $Advanced_Proxy   = 'Auto';  $Advanced_KEYWORD      = 'Auto';
+        $Advanced_IPCIDR  = 'Auto';  $Advanced_Other        = 'Auto';
+        $Advanced_Default = 'DIRECT';$Advanced_USERAGENT    = 'Auto';
     }
     else{
-        $Advanced_Proxy   = 'Proxy'; $Advanced_KEYWORD   = 'Proxy';
-        $Advanced_IPCIDR  = 'Proxy'; $Advanced_Other     = 'Proxy';
-        $Advanced_Default = 'DIRECT';$Advanced_USERAGENT = 'Proxy';
+        $Advanced_Proxy   = 'Proxy'; $Advanced_KEYWORD      = 'Proxy';
+        $Advanced_IPCIDR  = 'Proxy'; $Advanced_Other        = 'Proxy';
+        $Advanced_Default = 'DIRECT';$Advanced_USERAGENT    = 'Proxy';
     }
     $Default          = preg_replace('/([A-Z\-\.]+,)([a-zA-Z0-9_\-\/.%]+)/',"$1$2,{$Advanced_Default}",$Replace);
     $Proxy            = preg_replace('/([A-Z\-\.]+,)([a-zA-Z0-9_\-\/.%]+)/',"$1$2,{$Advanced_Proxy}",$Replace);

@@ -66,7 +66,8 @@ $RuleList = array(
     'YouTube'=>"{$ModuleAPI}YouTube{$Cache}",
     'Other'=>"{$ModuleAPI}Other{$Cache}",
     'Host'=>"{$ModuleAPI}Host{$Cache}",
-    'USERAGENT'=>"{$ModuleAPI}USERAGENT{$Cache}"
+    'USERAGENT'=>"{$ModuleAPI}USERAGENT{$Cache}",
+    'MITMHost'=>"{$ModuleAPI}MITMHost{$Cache}"
 );
 
 ?>
