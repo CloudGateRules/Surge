@@ -1,6 +1,6 @@
 CloudGate_Surge
 ===========================
-CloudGate规则|极简规则列表
+CloudGate极简规则项目
 
 使用说明
 ------
