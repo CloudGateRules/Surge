@@ -31,4 +31,4 @@ CloudGate极简规则项目
 开源信息
 ------
 [CloudGate Service](https://github.com/BurpSuite/Service)规则快速生成服务,通过[规则列表](https://github.com/BurpSuite/RuleList)生成不同格式规则!<br>
-您需要按照[规则列表](https://github.com/BurpSuite/RuleList)格式进行编写规则列表,使用起来非常方便!
+您需要按照[规则列表](https://github.com/BurpSuite/RuleList)格式进行编写规则列表信息,使用起来非常方便!
