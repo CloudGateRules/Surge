@@ -6,7 +6,7 @@ CloudGate极简规则项目
 ------
 请勿直接使用此项目规则`Surge.Conf`文件,否则会导致某些功能无法使用!<br>
 请创建空白配置导入服务器配置后,请求网址下载最新规则文件,否则会无法验证`AUTHKEY`信息<br>
-[AUTHKEY](https://github.com/BurpSuite/Manual/blob/master/Token.MD)(Authorization Key)介绍
+[AuthKey](https://github.com/BurpSuite/Manual/blob/master/Token.MD)(Authorization Key)介绍,AuthKey如何运作
 
 下载信息
 ------
