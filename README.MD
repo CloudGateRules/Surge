@@ -8,4 +8,3 @@ CloudGate Surge规则
 请勿直接使用此项目规则文件,请手动请求网址下载最新规则文件,最新规则加入`AUTHKEY`验证
 
 
-![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)
