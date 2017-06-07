@@ -28,11 +28,6 @@ CloudGate极简规则项目
 |A.BIG.T|`https://async.be/Rule/Basic/A.BIG.T`|
 |Hosts|`https://async.be/Rule/Basic/Hosts`|
 
-开源信息
-------
-[CloudGate Service](https://github.com/BurpSuite/Service)规则快速生成服务,通过[规则列表](https://github.com/BurpSuite/RuleList)生成实时更新的不同格式规则!<br>
-您需要按照[规则列表](https://github.com/BurpSuite/RuleList)格式进行编写规则列表信息,使用起来非常方便!
-
 获取帮助
 ------
 |联系方式|内容信息|
@@ -41,3 +36,12 @@ CloudGate极简规则项目
 |Github|https://github.com/BurpSuite|
 |Slack|https://burpsuite-team.slack.com|
 |Email|service@async.be|
+
+开源信息
+------
+[CloudGate Service](https://github.com/BurpSuite/Service)规则快速生成服务,通过[规则列表](https://github.com/BurpSuite/RuleList)生成实时更新的不同格式规则!<br>
+您需要按照[规则列表](https://github.com/BurpSuite/RuleList)格式进行编写规则列表信息,使用起来非常方便!
+
+[![doodle]][doodle-story]
+[doodle]: http://www.google.com/logos/doodles/2016/claude-shannons-100th-birthday-5731852344098816.2-hp2x.gif "克劳德·香农诞辰 100 周年"
+[doodle-story]: https://www.google.co.jp/search?q=Google
