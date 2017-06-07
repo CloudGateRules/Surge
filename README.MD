@@ -2,11 +2,15 @@ CloudGate_Surge
 ===========================
 CloudGate极简规则项目
 
+合并项目
+------
+全新项目[CloudGate](https://github.com/BurpSuite/CloudGate)集合全部规则项目,以后更新将移动到此项目<br>
+
 使用说明
 ------
 请勿直接使用此项目规则`Surge.Conf`文件,否则会导致某些功能无法使用!<br>
 请创建空白配置导入服务器配置后,请求网址下载最新规则文件,否则会无法验证`AUTHKEY`信息<br>
-[AuthKey](https://github.com/BurpSuite/Manual/blob/master/Token.MD)(`Authorization Key`)介绍,[AuthKey](https://github.com/BurpSuite/Manual/blob/master/Token.MD)如何运行,[AuthKey](https://github.com/BurpSuite/Manual/blob/master/Token.MD)作用!
+[AuthKey](https://github.com/BurpSuite/Manual/blob/master/AuthKey.MD)(`Authorization Key`)介绍,[AuthKey](https://github.com/BurpSuite/Manual/blob/master/AuthKey.MD)如何运行,[AuthKey](https://github.com/BurpSuite/Manual/blob/master/AuthKey.MD)作用!
 
 内容介绍
 ------
@@ -43,4 +47,3 @@ CloudGate极简规则项目
 您需要按照[规则列表](https://github.com/BurpSuite/RuleList)格式进行编写规则列表信息,使用起来非常方便!
 
 ![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)
-
