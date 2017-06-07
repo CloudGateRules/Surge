@@ -6,7 +6,7 @@ CloudGate极简规则项目
 ------
 请勿直接使用此项目规则`Surge.Conf`文件,否则会导致某些功能无法使用!<br>
 请创建空白配置导入服务器配置后,请求网址下载最新规则文件,否则会无法验证`AUTHKEY`信息<br>
-何为[AUTHKEY](https://github.com/BurpSuite/Manual/blob/master/Token.MD)?[AUTHKEY](https://github.com/BurpSuite/Manual/blob/master/Token.MD)是如何运作的?
+何为[AUTHKEY(Authorization Key)](https://github.com/BurpSuite/Manual/blob/master/Token.MD) [AUTHKEY (Authorization Key)](https://github.com/BurpSuite/Manual/blob/master/Token.MD)是如何运作的 
 
 下载信息
 ------
