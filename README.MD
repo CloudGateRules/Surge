@@ -6,7 +6,7 @@ CloudGate极简规则项目
 ------
 请勿直接使用此项目规则`Surge.Conf`文件,否则会导致某些功能无法使用!<br>
 请创建空白配置导入服务器配置后,请求网址下载最新规则文件,否则会无法验证`AUTHKEY`信息<br>
-[AuthKey](https://github.com/BurpSuite/Manual/blob/master/Token.MD)(Authorization Key)介绍,[AuthKey](https://github.com/BurpSuite/Manual/blob/master/Token.MD)如何运行,[AuthKey](https://github.com/BurpSuite/Manual/blob/master/Token.MD)作用
+[AuthKey](https://github.com/BurpSuite/Manual/blob/master/Token.MD)(Authorization Key)介绍,[AuthKey](https://github.com/BurpSuite/Manual/blob/master/Token.MD)如何运行,[AuthKey](https://github.com/BurpSuite/Manual/blob/master/Token.MD)作用!
 
 下载信息
 ------
@@ -28,3 +28,7 @@ CloudGate极简规则项目
 添加大量广告拦截规则,抑制大部分广告信息,阻挡垃圾广告侵入!<br>
 完全免费可靠稳定及安全,没有任何多余信息!同时支持更强大的高级规则!<br>
 
+开源信息
+------
+[CloudGate Service](https://github.com/BurpSuite/Service)规则快速生成服务,通过[规则列表](https://github.com/BurpSuite/RuleList)生成不同格式规则!<br>
+您需要按照[规则列表](https://github.com/BurpSuite/RuleList)格式进行编写规则列表,使用起来非常方便!
